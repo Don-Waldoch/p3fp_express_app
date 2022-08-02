@@ -1,0 +1,63 @@
+#######################################################################
+
+Sign Up
+POST: http://localhost:3001/users/signup
+
+{
+  "email"     : "waldoch.don@gmail.com",
+  "firstname" : "Don",
+  "lastname"  : "Waldoch",
+  "passhash"  : "401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc"
+}
+
+Don
+Waldoch
+waldoch.don@gmail.com
+Mvemjsu9p => 401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc
+
+#######################################################################
+
+Sign In
+POST: http://localhost:3001/users/signin
+
+{
+  "email"    : "waldoch.don@gmail.com",
+  "passhash" : "401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc"
+}
+
+waldoch.don@gmail.com
+Mvemjsu9p => 401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc
+
+#######################################################################
+
+Books
+POST:   http://localhost:3001/books
+PUT:    http://localhost:3001/books
+DELETE: http://localhost:3001/books/1234567890123
+{
+  "isbn" : "1234567890123",
+  "title" : "New Book",
+  "author" : "Thomas Waldoch",
+  "description" : "A book inserted/updated via the books controller.",
+  "image" : "https://storage.googleapis.com/du-prd/books/images/9780735219090.jpg"
+}
+
+Clubs
+POST:   http://localhost:3001/clubs
+PUT:    http://localhost:3001/clubs/6 (Must supply ClubID!)
+DELETE: http://localhost:3001/clubs/6
+{
+  "name" : "Club via Routes",
+  "start_date" : "1999-12-31",
+  "end_date" : "2000-01-31",
+  "booksisbn" : "0735219109"
+}
+
+Rosters
+POST:   http://localhost:3001/rosters
+PUT:    http://localhost:3001/rosters/9 (Must supply RosterID!)
+DELETE: http://localhost:3001/rosters/9
+{
+  "usersemail" : "waldoch.charlie@gmail.com",
+  "clubsid" : "2"
+}
