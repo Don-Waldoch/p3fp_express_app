@@ -30,18 +30,6 @@ app.get("/", (req, res) => {
 });
 
 // Controllers:
-//const bookclubsController = require("./controllers/bookclubs_controller.js");
-//app.use("/bookclubs", bookclubsController);
-
-//const booksController = require("./controllers/books_controller.js");
-//app.use("/books", booksController);
-
-//const clubsController = require("./controllers/clubs_controller.js");
-//app.use("/clubs", clubsController);
-
-//const rostersController = require("./controllers/rosters_controller.js");
-//app.use("/rosters", rostersController);
-
 const usersController = require("./controllers/users.js");
 app.use("/users", usersController);
 
