@@ -1,6 +1,76 @@
-#######################################################################
+Don
+Waldoch
+waldoch.don@gmail.com
+Mvemjsu9p => 401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc
 
+#######################################################################
+Favorites
+
+GET: http://localhost:3001/favorites/1
+
+[
+    {
+        "favoriteid": 1,
+        "userid": 1,
+        "exerciseid": "0007"
+    },
+    {
+        "favoriteid": 3,
+        "userid": 1,
+        "exerciseid": "0008"
+    }
+]
+
+[]
+
+POST: http://localhost:3001/favorites
+
+{
+  "exerciseid" : "0007",
+  "userid"     : "1"
+}
+
+Success: 
+200
+{
+    "favoriteid": 1,
+    "userid": 1,
+    "exerciseid": "0007"
+}
+
+Failure:
+500
+{
+    "length": 248,
+    "name": "error",
+    "severity": "ERROR",
+    "code": "23505",
+    "detail": "Key (userid, exerciseid)=(1, 0007) already exists.",
+    "schema": "public",
+    "table": "favorites",
+    "constraint": "favorites_userid_exerciseid_key",
+    "file": "nbtinsert.c",
+    "line": "663",
+    "routine": "_bt_check_unique"
+}
+
+{
+    "length": 252,
+    "name": "error",
+    "severity": "ERROR",
+    "code": "23503",
+    "detail": "Key (userid)=(11) is not present in table \"users\".",
+    "schema": "public",
+    "table": "favorites",
+    "constraint": "fk_favorites_userid",
+    "file": "ri_triggers.c",
+    "line": "2528",
+    "routine": "ri_ReportViolation"
+}
+
+#######################################################################
 Sign Up
+
 POST: http://localhost:3001/users/signup
 
 {
@@ -10,14 +80,34 @@ POST: http://localhost:3001/users/signup
   "passhash"  : "401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc"
 }
 
-Don
-Waldoch
-waldoch.don@gmail.com
-Mvemjsu9p => 401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc
+Success: 
+200
+{
+    "userid": 1,
+    "email": "waldoch.don@gmail.com",
+    "firstname": "Don",
+    "lastname": "Waldoch"
+}
+
+Failure:
+500
+{
+    "length": 214,
+    "name": "error",
+    "severity": "ERROR",
+    "code": "23505",
+    "detail": "Key (email)=(waldoch.Jill@gmail.com) already exists.",
+    "schema": "public",
+    "table": "users",
+    "constraint": "users_email_key",
+    "file": "nbtinsert.c",
+    "line": "663",
+    "routine": "_bt_check_unique"
+}
 
 #######################################################################
-
 Sign In
+
 POST: http://localhost:3001/users/signin
 
 {
@@ -25,39 +115,17 @@ POST: http://localhost:3001/users/signin
   "passhash" : "401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc"
 }
 
-waldoch.don@gmail.com
-Mvemjsu9p => 401f3117effd9b48b40cdb87f5a7da89b1df47a35ed9a6de4eafcb630423f8dc
+Success: 
+200
+{
+    "userid": 1,
+    "email": "waldoch.don@gmail.com",
+    "firstname": "Don",
+    "lastname": "Waldoch"
+}
+
+Failure:
+401
+null
 
 #######################################################################
-
-Books
-POST:   http://localhost:3001/books
-PUT:    http://localhost:3001/books
-DELETE: http://localhost:3001/books/1234567890123
-{
-  "isbn" : "1234567890123",
-  "title" : "New Book",
-  "author" : "Thomas Waldoch",
-  "description" : "A book inserted/updated via the books controller.",
-  "image" : "https://storage.googleapis.com/du-prd/books/images/9780735219090.jpg"
-}
-
-Clubs
-POST:   http://localhost:3001/clubs
-PUT:    http://localhost:3001/clubs/6 (Must supply ClubID!)
-DELETE: http://localhost:3001/clubs/6
-{
-  "name" : "Club via Routes",
-  "start_date" : "1999-12-31",
-  "end_date" : "2000-01-31",
-  "booksisbn" : "0735219109"
-}
-
-Rosters
-POST:   http://localhost:3001/rosters
-PUT:    http://localhost:3001/rosters/9 (Must supply RosterID!)
-DELETE: http://localhost:3001/rosters/9
-{
-  "usersemail" : "waldoch.charlie@gmail.com",
-  "clubsid" : "2"
-}

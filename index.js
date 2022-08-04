@@ -30,6 +30,9 @@ app.get("/", (req, res) => {
 });
 
 // Controllers:
+const favoritesController = require("./controllers/favorites.js");
+app.use("/favorites", favoritesController);
+
 const usersController = require("./controllers/users.js");
 app.use("/users", usersController);
 
