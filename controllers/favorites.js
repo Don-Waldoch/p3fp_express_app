@@ -20,15 +20,11 @@ const { db } = require("../utils/dbConnection");
 //
 
 favorites.get("/:userid", async (req, res) => {
-  // console.log(req.params.userid);
   const response = await queryToFetchFavorites(req.params.userid);
   res.status(200).json(response);
 });
 
 favorites.post("/", async (req, res) => {
-  console.log("req body", req.body);
-  // const response = {"status" : "OK"};
-  // res.status(200).json(response);
   try {
     const response = await queryToAddFavorite(req.body);
     res.status(200).json(response);
@@ -41,7 +37,6 @@ favorites.post("/", async (req, res) => {
 // Queries
 
 queryToAddFavorite = (body) => {
-  // console.log(body)
   return db.one(
     `
     INSERT INTO favorites (userid, exerciseid)

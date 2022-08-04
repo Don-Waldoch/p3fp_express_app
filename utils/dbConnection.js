@@ -5,13 +5,13 @@ const path = require('path');
 
 // CONFIGURATION
 //require('dotenv').config({path: '../.env'})
-require('dotenv').config()
+require('dotenv').config();
 
 const initOptions = {
   capSQL: true,
   error(error, e) {
     if (e.cn) {
-        console.log('CN:', e.cn);
+      console.log('CN:', e.cn);
       console.log('EVENT:', error.message || error);
     }
   },
@@ -28,7 +28,7 @@ const cn = {
   user:     process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   ssl: {
-     rejectUnauthorized: false,
+    rejectUnauthorized: false,
   },
 };
 

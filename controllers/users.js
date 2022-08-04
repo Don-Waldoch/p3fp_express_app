@@ -1,5 +1,5 @@
-const express = require('express')
-const users = express.Router()
+const express = require('express');
+const users = express.Router();
 const { db } = require("../utils/dbConnection");
 
 ///////////////////////////////////////////////////////////////////////
@@ -22,11 +22,10 @@ const { db } = require("../utils/dbConnection");
 users.post("/signin", async (req, res) => {
   try {
     const response = await queryToSignInUser(req.body);
-    console.log(response);
-    if (response === null) {
-      res.status(401).json(response);
-    } else {
+    if (response !== null) {
       res.status(200).json(response);
+    } else {
+      res.status(401).json(response);
     }
   } catch (error) {
     res.status(500).json(error);
@@ -46,7 +45,6 @@ users.post("/signup", async (req, res) => {
 // Queries
 
 queryToSignInUser = (body) => {
-  // console.log(body);
   return db.oneOrNone(
     `
     SELECT userid, email, firstname, lastname FROM users
@@ -56,7 +54,6 @@ queryToSignInUser = (body) => {
 }
 
 queryToSignUpUser = (body) => {
-  // console.log(body)
   return db.one(
     `
     INSERT INTO users (email, firstname, lastname, passhash)
