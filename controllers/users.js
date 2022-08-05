@@ -51,7 +51,7 @@ queryToSignInUser = (body) => {
     WHERE email = '${body.email}' AND passhash = '${body.passhash}'
     `
   );
-}
+};
 
 queryToSignUpUser = (body) => {
   return db.one(
@@ -62,6 +62,6 @@ queryToSignUpUser = (body) => {
     `,
     { ...body }
   );
-}
+};
 
 module.exports = users;

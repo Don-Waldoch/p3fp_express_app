@@ -1,5 +1,5 @@
-const express = require('express')
-const favorites = express.Router()
+const express = require('express');
+const favorites = express.Router();
 const { db } = require("../utils/dbConnection");
 
 ///////////////////////////////////////////////////////////////////////
@@ -45,12 +45,12 @@ queryToAddFavorite = (body) => {
     `,
     { ...body }
   );
-}
+};
 
 queryToFetchFavorites = (userid) => {
   return db.manyOrNone(
     `SELECT favoriteid, userid, exerciseid FROM favorites WHERE userid = '${userid}'`
   );
-}
+};
 
 module.exports = favorites;

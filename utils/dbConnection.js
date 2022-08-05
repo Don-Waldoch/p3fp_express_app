@@ -17,7 +17,7 @@ const initOptions = {
   },
   query(e) {
     console.log(e.query);
-  },
+  }
 };
 const pgp = require('pg-promise')(initOptions);
 
@@ -29,7 +29,7 @@ const cn = {
   password: process.env.DB_PASSWORD,
   ssl: {
     rejectUnauthorized: false,
-  },
+  }
 };
 
 const db = pgp(cn);
